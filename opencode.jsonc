@@ -1,0 +1,21 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+
+  // Format files after write/edit.
+  "formatter": true,
+
+  // Todo tool for multi-step work, and two levels of delegation:
+  // Orchestrator (primary) -> department head -> specialist.
+  "experimental": {
+    "todo": true,
+    "subagent_depth": 2,
+  },
+
+  // Anything destructive or hard to undo asks first.
+  "permissions": [
+    { "action": "shell", "resource": "git push *", "effect": "ask" },
+    { "action": "shell", "resource": "git reset --hard *", "effect": "ask" },
+    { "action": "shell", "resource": "rm -rf *", "effect": "ask" },
+    { "action": "shell", "resource": "Remove-Item * -Recurse *", "effect": "ask" },
+  ],
+}

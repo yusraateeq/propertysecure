@@ -1,0 +1,138 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-navy: #164b70;
+  --color-navy-deep: #082c46;
+  --color-gold: #e8b000;
+  --color-gold-hover: #f0bd19;
+  --color-accent: #805f00;
+  --color-white: #ffffff;
+  --color-surface: #f4f7fa;
+  --color-surface-blue: #eef3f7;
+  --color-body: #17354b;
+  --color-border: #dce2e8;
+  --header-height: 84px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-height) + 24px);
+}
+
+body {
+  margin: 0;
+  background: var(--color-white);
+  color: var(--color-body);
+  font-family: var(--font-manrope), Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-navy);
+  font-family: var(--font-merriweather), Georgia, serif;
+  font-weight: 700;
+  line-height: 1.18;
+  letter-spacing: -0.025em;
+}
+
+p {
+  margin: 0;
+}
+
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button,
+a {
+  touch-action: manipulation;
+}
+
+button {
+  font: inherit;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-gold) 28%, transparent);
+  color: var(--color-navy-deep);
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-navy-deep);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 2px var(--color-white);
+}
+
+@layer components {
+  .site-container {
+    @apply mx-auto w-full max-w-site px-5 sm:px-7 lg:px-8;
+  }
+
+  .section-space {
+    @apply py-14 md:py-20;
+  }
+
+  .eyebrow {
+    @apply font-heading text-xs font-bold uppercase tracking-[0.20em] text-navy sm:text-[13px];
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .reading-width {
+    max-width: 70ch;
+  }
+
+  .subtle-grid {
+    background-image: linear-gradient(rgba(11, 64, 104, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(11, 64, 104, 0.035) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .dark-grid {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+}
+
+@media (max-width: 639px) {
+  :root {
+    --header-height: 72px;
+  }
+
+  body {
+    font-size: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
